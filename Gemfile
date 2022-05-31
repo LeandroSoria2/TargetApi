@@ -51,6 +51,7 @@ gem 'devise_token_auth', '>= 1.2.0', git: "https://github.com/lynndylanhurley/de
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'annotate', '~> 3.2'
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.21'
