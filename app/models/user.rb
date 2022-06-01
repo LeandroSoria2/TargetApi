@@ -6,7 +6,7 @@
 #
 #  id                     :bigint           not null, primary key
 #  allow_password_change  :boolean          default(FALSE)
-#  email                  :string
+#  email                  :string           not null
 #  encrypted_password     :string           default(""), not null
 #  gender                 :string
 #  image                  :string
@@ -33,4 +33,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
+  validates :email, presence: true, uniqueness: { scope: :provider }
+  validates :gender, presence: true, inclusion: { in: %w[male female fluid], message: "%{value} is not a valid gender" }
 end
