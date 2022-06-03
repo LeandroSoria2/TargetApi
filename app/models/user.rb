@@ -8,7 +8,7 @@
 #  allow_password_change  :boolean          default(FALSE)
 #  email                  :string           not null
 #  encrypted_password     :string           default(""), not null
-#  gender                 :string
+#  gender                 :integer          default("female")
 #  image                  :string
 #  lastname               :string
 #  name                   :string
@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
+  enum gender: { female: 0, male: 1, fluid: 2 }
   validates :email, presence: true, uniqueness: { scope: :provider }
-  validates :gender, presence: true, inclusion: { in: %w[male female fluid], message: "%{value} is not a valid gender" }
+  validates :gender, presence: true
 end
