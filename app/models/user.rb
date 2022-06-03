@@ -8,7 +8,7 @@
 #  allow_password_change  :boolean          default(FALSE)
 #  email                  :string           not null
 #  encrypted_password     :string           default(""), not null
-#  gender                 :integer          default("female")
+#  gender                 :integer
 #  image                  :string
 #  lastname               :string
 #  name                   :string
