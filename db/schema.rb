@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_145240) do
     t.string "nickname"
     t.string "image"
     t.string "email", null: false
-    t.integer "gender", default: 0
+    t.integer "gender"
     t.json "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
