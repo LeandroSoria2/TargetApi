@@ -30,6 +30,6 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
     gender { User.genders.keys.sample }
-    
+ 
   end
 end
