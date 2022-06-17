@@ -10,6 +10,10 @@ module Api
         def resource_params
           params.require(:user).permit(:email, :password)
         end
+
+        def render_create_success
+          render json:  { user: resource_data }, status: :created
+        end
       end
     end
   end

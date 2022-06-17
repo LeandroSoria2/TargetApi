@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'POST api/v1/users/sign_in', type: :request do
-  subject { post new_user_session_path, params: params, as: :json }
+RSpec.describe 'POST api/v1/auth/sign_in', type: :request do
+  subject { post api_v1_user_session_path, params: params, as: :json }
 
   let(:password) { 'password' }
   let(:user) { create(:user, password: password) }
@@ -28,14 +28,12 @@ RSpec.describe 'POST api/v1/users/sign_in', type: :request do
     end
 
     it 'returns the user' do
-      expect(json[:user][:id]).to eq(user.id)
-      expect(json[:user][:email]).to eq(user.email)
-      expect(json[:user][:username]).to eq(user.username)
-      expect(json[:user][:uid]).to eq(user.uid)
-      expect(json[:user][:provider]).to eq('email')
-      expect(json[:user][:first_name]).to eq(user.first_name)
-      expect(json[:user][:last_name]).to eq(user.last_name)
-      expect(json[:user][:gender]).to eq(user.gender)
+       expect(json[:user][:email]).to eq(user.email)
+       expect(json[:user][:uid]).to eq(user.uid)
+       expect(json[:user][:provider]).to eq('email')
+       expect(json[:user][:name]).to eq(user.name)
+       expect(json[:user][:lastname]).to eq(user.lastname)
+       expect(json[:user][:gender]).to eq(user.gender)
     end
 
     it 'returns a valid client and access token' do
@@ -60,7 +58,8 @@ RSpec.describe 'POST api/v1/users/sign_in', type: :request do
 
       expect(response).to be_unauthorized
       expected_response = {
-        error: 'Invalid login credentials. Please try again.'
+        errors: ['Invalid login credentials. Please try again.'],
+        success: false
       }.with_indifferent_access
       expect(json).to eq(expected_response)
     end
@@ -81,7 +80,8 @@ RSpec.describe 'POST api/v1/users/sign_in', type: :request do
 
       expect(response).to be_unauthorized
       expected_response = {
-        error: 'Invalid login credentials. Please try again.'
+        errors: ['Invalid login credentials. Please try again.'],
+        success: false
       }.with_indifferent_access
       expect(json).to eq(expected_response)
     end
