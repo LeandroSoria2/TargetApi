@@ -1,26 +1,25 @@
-describe 'POST api/v1/users/', type: :request do
+require 'rails_helper'
+
+describe 'POST api/v1/auth', type: :request do
   let(:user)            { User.last }
   let(:failed_response) { 422 }
 
   describe 'POST create' do
-    subject { post user_registration_path, params: params, as: :json }
+    subject { post api_v1_user_registration_path, params: params, as: :json }
 
-    let(:username)              { 'test' }
-    let(:email)                 { 'test@test.com' }
-    let(:password)              { '12345678' }
-    let(:password_confirmation) { '12345678' }
-    let(:first_name)            { 'Johnny' }
-    let(:last_name)             { 'Perez' }
+    let(:user_data) { build(:user) }
+    let(:email) { user_data.email }
+    let(:password) { user_data.password }
+    let(:password_confirmation) { user_data.password_confirmation }
+    let(:gender) { user_data.gender }
 
     let(:params) do
       {
         user: {
-          username: username,
           email: email,
           password: password,
           password_confirmation: password_confirmation,
-          first_name: first_name,
-          last_name: last_name
+          gender: gender
         }
       }
     end
@@ -30,6 +29,7 @@ describe 'POST api/v1/users/', type: :request do
 
     it 'returns a successful response' do
       subject
+
       expect(response).to have_http_status(:success)
     end
 
@@ -41,13 +41,10 @@ describe 'POST api/v1/users/', type: :request do
       subject
 
       expect(json[:user][:id]).to eq(user.id)
-      expect(json[:user][:email]).to eq(user.email)
-      expect(json[:user][:username]).to eq(user.username)
-      expect(json[:user][:uid]).to eq(user.uid)
+      expect(json[:user][:email]).to eq(user_data.email)
+      expect(json[:user][:uid]).to eq(user_data.email)
       expect(json[:user][:provider]).to eq('email')
-      expect(json[:user][:first_name]).to eq(user.first_name)
-      expect(json[:user][:last_name]).to eq(user.last_name)
-      expect(json[:user][:gender]).to eq(user.gender)
+      expect(json[:user][:gender]).to eq(user_data.gender)
     end
 
     context 'when the email is not correct' do
@@ -92,6 +89,14 @@ describe 'POST api/v1/users/', type: :request do
       it 'does not return a successful response' do
         subject
         expect(response.status).to eq(failed_response)
+      end
+    end
+
+    context 'when the gender is not correct' do
+      let(:gender) { 'invalid_gender' }
+
+      it 'does not create a user' do
+        expect { subject }.to raise_error(ArgumentError).and(change(User, :count).by(0))
       end
     end
   end
