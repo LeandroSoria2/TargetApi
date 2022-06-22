@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: users
@@ -27,15 +25,20 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_uid_and_provider      (uid,provider) UNIQUE
 #
-class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-  include DeviseTokenAuth::Concerns::User
+require 'rails_helper'
 
-  enum gender: { female: 0, male: 1, fluid: 2 }
+RSpec.describe User, type: :model do
+  describe 'validations' do
+    subject { build(:user) }
 
-  validates :email, presence: true, uniqueness: { scope: :provider }
-  validates :gender, presence: true
+    it { is_expected.to validate_presence_of(:email) }
+    it { is_expected.to validate_uniqueness_of(:email).case_insensitive.scoped_to(:provider) }
+    it 'validates gender enum field' do
+      is_expected.to define_enum_for(:gender)
+        .with_values(female: 0,
+                     male: 1,
+                     fluid: 2)
+        .backed_by_column_of_type(:integer)
+    end
+  end
 end
