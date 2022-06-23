@@ -1,0 +1,31 @@
+inherit_gem:
+  rubocop-rootstrap:
+    - config/rails_edge.yml
+
+inherit_mode:
+  merge:
+    - Exclude
+
+AllCops:
+  Exclude:
+    - bin/bundle
+
+Layout/LineLength:
+  Exclude:
+    - db/migrate/20220518201152_devise_token_auth_create_users.rb
+    - db/migrate/20220601190711_change_user_email_not_null.rb
+    - db/migrate/20220603145240_change_user_gender_enum.rb
+    - rubocGemfile
+    - config/initializers/devise.rb
+
+Lint/EmptyBlock:
+  Exclude:
+    - spec/requests/api/v1/sessions/destroy_spec.rb
+
+Rails/Delegate:
+  Exclude:
+    - app/controllers/api/concerns/act_as_api_request.rb
+
+Rails/LexicallyScopedActionFilter:
+  Exclude:
+    - app/controllers/api/v1/api_controller.rb
