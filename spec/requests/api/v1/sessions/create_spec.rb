@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe 'POST api/v1/auth/sign_in', type: :request do
-  subject { post api_v1_user_session_path, params: params, as: :json }
+  subject { post api_v1_user_session_path, params:, as: :json }
 
   let(:password) { 'password' }
-  let(:user) { create(:user, password: password) }
+  let(:user) { create(:user, password:) }
   let(:params) do
     {
       user:
         {
           email: user.email,
-          password: password
+          password:
         }
     }
   end
@@ -28,12 +28,12 @@ RSpec.describe 'POST api/v1/auth/sign_in', type: :request do
     end
 
     it 'returns the user' do
-       expect(json[:user][:email]).to eq(user.email)
-       expect(json[:user][:uid]).to eq(user.uid)
-       expect(json[:user][:provider]).to eq('email')
-       expect(json[:user][:name]).to eq(user.name)
-       expect(json[:user][:lastname]).to eq(user.lastname)
-       expect(json[:user][:gender]).to eq(user.gender)
+      expect(json[:user][:email]).to eq(user.email)
+      expect(json[:user][:uid]).to eq(user.uid)
+      expect(json[:user][:provider]).to eq('email')
+      expect(json[:user][:name]).to eq(user.name)
+      expect(json[:user][:lastname]).to eq(user.lastname)
+      expect(json[:user][:gender]).to eq(user.gender)
     end
 
     it 'returns a valid client and access token' do
