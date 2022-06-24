@@ -50,6 +50,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'annotate', '~> 3.2'
+  gem 'reek', '~> 6.1', '>= 6.1.1'
   gem 'rubocop-rails', '~> 2.15'
   gem 'rubocop-rootstrap', '~> 1.2'
   gem 'web-console'
