@@ -4,14 +4,14 @@ on: [push]
 
 jobs:
   build: 
-    runs on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     services: 
       db: 
         image: postgres:14
         env:
           POSTGRES_USER: postgres
-          POSTGRES_HOST_AUTH_METHEOD: trust
+          POSTGRES_HOST_AUTH_METHOD: trust
         ports:
           - 5432:5432
         options: >-
@@ -20,9 +20,10 @@ jobs:
           --health-timeout 5s
           --health-reties 5s
     steps:
-      - name: chechout code
+      - name: Chechout code
         uses: actions/checkout@3
-      - name: Setup-ruby@v1
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
           bundle-cache: true
       - name: Setup Database
