@@ -19,16 +19,16 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-      - name: Chechout code
+      - name: Checkout code
         uses: actions/checkout@v3
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          bundle-cache: true
+          bundler-cache: true
       - name: Setup Database
         run: |
           cp config/database.yml.example config/database.yml
-          bundle exec rails db:create db:migrate
+          bundle exec rake db:create db:migrate
       - name: Check for untracked changes in schema.rb
         uses: rootstrap/check_untracked_changes@v1
         with:
