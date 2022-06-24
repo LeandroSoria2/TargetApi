@@ -15,7 +15,7 @@ Layout/LineLength:
     - db/migrate/20220518201152_devise_token_auth_create_users.rb
     - db/migrate/20220601190711_change_user_email_not_null.rb
     - db/migrate/20220603145240_change_user_gender_enum.rb
-    - rubocGemfile
+    - Gemfile
     - config/initializers/devise.rb
 
 Lint/EmptyBlock:
