@@ -5,5 +5,6 @@ namespace :code do
   task analysis: :environment do
     sh 'bundle exec rubocop .'
     sh 'bundle exec reek .'
+    sh 'bundle exec rails_best_practices .'
   end
 end
