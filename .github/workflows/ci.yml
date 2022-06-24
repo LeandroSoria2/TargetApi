@@ -33,9 +33,6 @@ jobs:
         uses: rootstrap/check_untracked_changes@v1
         with:
           path: "./db/schema.rb"
-      - name: Run Code Analysis
-        run: |
-          bundle exec rake code_analysis
       - name: Run Tests
         run: |
           bundle exec rspec       
