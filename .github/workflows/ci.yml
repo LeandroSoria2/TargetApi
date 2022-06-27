@@ -39,6 +39,6 @@ jobs:
       - name: Check for missing annotations
         run: bundle exec annotate
       - name: Check for untracked changes in app and spec directories
-        uses: ./.github/actions/check_untracked_changes
+        uses: rootstrap/check_untracked_changes@v1
         with:
           path: "./app/ ./spec/"
