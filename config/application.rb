@@ -9,14 +9,7 @@ Bundler.require(*Rails.groups)
 module Target
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
-    config.add_autoload_paths_to_load_path = false
-    
-    config.generators do |g|
-      g.test_framework :rspec
-      g.fixture_replacement :factory_bot, dir: 'spec/factories'
-    end
-
+    config.load_defaults 6.0
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
