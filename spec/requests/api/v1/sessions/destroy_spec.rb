@@ -2,7 +2,7 @@ describe 'DELETE aapi/v1/auth/sign_out', type: :request do
   let(:user) { create(:user) }
   let(:headers) { auth_headers }
 
-  subject { delete destroy_api_v1_user_session_path, headers:, as: :json }
+  subject { delete destroy_api_v1_user_session_path, headers: headers, as: :json }
   context 'with a valid token' do
     it 'returns a successful response' do
       subject
