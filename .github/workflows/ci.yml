@@ -38,10 +38,10 @@ jobs:
           bundle exec rspec       
       - name: Check for missing annotations
         run: bundle exec annotate
+      - name: Run Code Analysis
+        run: |
+          bundle exec rake code:analysis
       - name: Check for untracked changes in app and spec directories
         uses: rootstrap/check_untracked_changes@v1
         with:
           path: "./app/ ./spec/"
-      - name: Run rubocop
-        run: |
-          bundle exec rubocop     

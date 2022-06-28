@@ -29,6 +29,4 @@ Rails/LexicallyScopedActionFilter:
     - app/controllers/api/v1/api_controller.rb
 
 Style/HashSyntax:
-  Exclude:
-    - spec/requests/api/v1/sessions/*
-    - spec/requests/users/*
+  EnforcedShorthandSyntax: never
