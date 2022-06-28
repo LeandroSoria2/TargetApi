@@ -1,4 +1,4 @@
-detectors:
+codetectors:
   Attribute:
     enabled: false
     exclude: []
@@ -127,3 +127,4 @@ detectors:
 exclude_paths:
   - config
   - db/migrate
+  - lib/generators/active_record/templates/migration.rb
