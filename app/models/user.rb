@@ -27,7 +27,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_uid_and_provider      (uid,provider) UNIQUE
 #
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -36,6 +36,6 @@ class User < ActiveRecord::Base
 
   enum gender: { female: 0, male: 1, fluid: 2 }
 
-  validates :email, presence: true, uniqueness: { scope: :provider }
+  validates :email, presence: true, uniqueness: true
   validates :gender, presence: true
 end

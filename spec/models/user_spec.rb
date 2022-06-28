@@ -3,19 +3,19 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
-#  allow_password_change  :boolean          default(FALSE)
-#  email                  :string           not null
-#  encrypted_password     :string           default(""), not null
-#  gender                 :integer
-#  image                  :string
-#  lastname               :string
-#  name                   :string
-#  nickname               :string
 #  provider               :string           default("email"), not null
-#  reset_password_sent_at :datetime
-#  reset_password_token   :string
-#  tokens                 :json
 #  uid                    :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  allow_password_change  :boolean          default(FALSE)
+#  name                   :string
+#  lastname               :string
+#  nickname               :string
+#  image                  :string
+#  email                  :string           not null
+#  gender                 :integer
+#  tokens                 :json
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
