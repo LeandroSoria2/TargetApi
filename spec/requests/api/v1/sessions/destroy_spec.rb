@@ -1,6 +1,6 @@
-describe 'DELETE aapi/v1/auth/sign_out', type: :request do
+describe 'DELETE api/v1/auth/sign_out', type: :request do
   let(:user) { create(:user) }
-  let(:headers) { auth_headers }
+  let!(:headers) { auth_headers }
 
   subject { delete destroy_api_v1_user_session_path, headers: headers, as: :json }
   context 'with a valid token' do
