@@ -1,0 +1,44 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:14
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Setup Database
+        run: |
+          cp config/database.yml.example config/database.yml
+          bundle exec rake db:create db:migrate
+      - name: Check for untracked changes in schema.rb
+        uses: rootstrap/check_untracked_changes@v1
+        with:
+          path: "./db/schema.rb"
+      - name: Run Tests
+        run: |
+          bundle exec rspec       
+      - name: Check for missing annotations
+        run: bundle exec annotate
+      - name: Check for untracked changes in app and spec directories
+        uses: rootstrap/check_untracked_changes@v1
+        with:
+          path: "./app/ ./spec/"
