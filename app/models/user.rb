@@ -15,7 +15,7 @@
 #  lastname               :string
 #  nickname               :string
 #  image                  :string
-#  email                  :string           not null
+#  email                  :string
 #  gender                 :integer
 #  tokens                 :json
 #  created_at             :datetime         not null
