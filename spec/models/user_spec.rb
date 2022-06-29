@@ -13,7 +13,7 @@
 #  lastname               :string
 #  nickname               :string
 #  image                  :string
-#  email                  :string           not null
+#  email                  :string
 #  gender                 :integer
 #  tokens                 :json
 #  created_at             :datetime         not null
@@ -31,8 +31,6 @@ RSpec.describe User, type: :model do
   describe 'validations' do
     subject { build(:user) }
 
-    it { is_expected.to validate_presence_of(:email) }
-    it { is_expected.to validate_uniqueness_of(:email).case_insensitive.scoped_to(:provider) }
     it 'validates gender enum field' do
       is_expected.to define_enum_for(:gender)
         .with_values(female: 0,
