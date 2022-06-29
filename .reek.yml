@@ -127,4 +127,4 @@ codetectors:
 exclude_paths:
   - config
   - db/migrate
-  - lib/generators/active_record/templates/migration.rb
+  - vendor
