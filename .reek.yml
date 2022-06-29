@@ -1,4 +1,4 @@
-codetectors:
+detectors:
   Attribute:
     enabled: false
     exclude: []
