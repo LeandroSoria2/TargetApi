@@ -17,7 +17,5 @@
 #  index_admin_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 FactoryBot.define do
-  factory :admin_user do
-    
-  end
+  factory :admin_user
 end
