@@ -33,11 +33,13 @@ gem 'jbuilder'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
+gem 'activeadmin', '~> 2.13', '>= 2.13.1'
 gem 'bootsnap', require: false
 gem 'byebug', '~> 11.1', '>= 11.1.3'
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'devise_token_auth', '>= 1.2.0', git: 'https://github.com/lynndylanhurley/devise_token_auth'
 gem 'rack-cors', '~> 1.1', '>= 1.1.1'
+gem 'sass-rails', '~> 6.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
