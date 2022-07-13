@@ -46,12 +46,14 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.21'
+  gem 'rspec_api_documentation'
   gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'annotate', '~> 3.2'
+  gem 'apitome', '~> 0.3.1'
   gem 'brakeman', '~> 5.2', '>= 5.2.3'
   gem 'rails_best_practices', '~> 1.23', '>= 1.23.1'
   gem 'reek', '~> 6.1', '>= 6.1.1'
