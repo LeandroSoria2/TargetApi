@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe 'DELETE api/v1/auth/sign_out', type: :request do
   let(:user) { create(:user) }
   let!(:headers) { auth_headers }
