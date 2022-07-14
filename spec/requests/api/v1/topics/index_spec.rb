@@ -18,7 +18,8 @@ describe 'GET api/v1/topics', type: :request do
     it 'returns the correct amount of topics' do
       expect(json[:topics].size).to eq(3)
     end
-    it 'returns all the clients' do
+
+    it 'returns all the topics' do
       subject
       expect(json[:topics].pluck(:id, :name)).to match_array(topics.pluck(:id, :name))
     end

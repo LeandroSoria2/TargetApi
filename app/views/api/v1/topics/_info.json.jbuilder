@@ -1,2 +1,2 @@
- json.id topic.id
- json.name topic.name
+json.id topic.id
+json.name topic.name
