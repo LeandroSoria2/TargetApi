@@ -1,3 +1,1 @@
-json.topics @topics do |topic|
-  json.partial! 'info', topic: topic
-end
+json.topics @topics, partial: 'info', as: :topic

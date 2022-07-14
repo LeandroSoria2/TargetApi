@@ -1,6 +1,6 @@
 module Api
   module V1
-    class TopicsController < ApplicationController
+    class TopicsController < Api::V1::ApiController
       def index
         @topics = Topic.all
       end
