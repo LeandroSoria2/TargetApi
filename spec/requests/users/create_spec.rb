@@ -5,7 +5,7 @@ describe 'POST api/v1/auth', type: :request do
   let(:failed_response) { 422 }
 
   describe 'POST create' do
-    subject { post api_v1_user_registration_path, params: params, as: :json }
+    subject { post user_registration_path, params: params, as: :json }
 
     let(:user_data) { build(:user) }
     let(:email) { user_data.email }
