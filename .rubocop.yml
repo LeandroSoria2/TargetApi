@@ -20,6 +20,8 @@ Layout/LineLength:
 Lint/EmptyBlock:
   Exclude:
     - spec/requests/api/v1/sessions/destroy_spec.rb
+    - spec/requests/api/v1/topics/index_spec.rb
+    - spec/acceptance/topics_spec.rb
 
 Rails/Delegate:
   Exclude:
@@ -31,3 +33,4 @@ Rails/LexicallyScopedActionFilter:
 
 Style/HashSyntax:
   EnforcedShorthandSyntax: never
+

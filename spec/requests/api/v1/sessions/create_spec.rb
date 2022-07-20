@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'POST api/v1/auth/sign_in', type: :request do
-  subject { post api_v1_user_session_path, params: params, as: :json }
+  subject { post user_session_path, params: params, as: :json }
 
   let(:password) { 'password' }
   let(:user) { create(:user, password: password) }

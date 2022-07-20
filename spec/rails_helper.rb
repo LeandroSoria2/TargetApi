@@ -1,7 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
 require 'support/factory_bot'
-ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
@@ -15,7 +15,7 @@ end
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
-
+  config.use_transactional_fixtures = true
   config.filter_rails_from_backtrace!
 end
 

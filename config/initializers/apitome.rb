@@ -4,7 +4,7 @@ if Rails.env.development?
     config.root = nil
     config.doc_path = 'doc/api'
     config.parent_controller = 'ActionController::Base'
-    config.title = 'Forecast API Documentation'
+    config.title = 'Target API Documentation'
     config.layout = 'apitome/application'
     config.code_theme = 'default'
     config.css_override = nil
