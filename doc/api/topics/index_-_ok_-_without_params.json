@@ -1,0 +1,46 @@
+{
+  "resource": "Topics",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "/api/v1/topics",
+  "description": "Index - OK - Without params",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/topics",
+      "request_body": null,
+      "request_headers": {
+        "Access-Token": "H5DVUqDOCXK8eRD652Jgpw",
+        "Client": "6vPmIytwOgqjkMY8CIJtJw",
+        "Uid": "byron_effertz@mraz.biz"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n              \"topics\": [\n                {\n                  \"id\": 298,\n                  \"name\": \"voluptatum\"\n                },\n                {\n                  \"id\": 299,\n                  \"name\": \"quis\"\n                },\n                {\n                  \"id\": 300,\n                  \"name\": \"voluptatem\"\n                }\n              ]\n            }",
+      "response_headers": {
+        "access-token": " ",
+        "token-type": "Bearer",
+        "client": "6vPmIytwOgqjkMY8CIJtJw",
+        "expiry": " ",
+        "uid": "byron_effertz@mraz.biz"
+      },
+      "response_content_type": null,
+      "curl": null,
+      "request_headers_text": "Access-Token: H5DVUqDOCXK8eRD652Jgpw\n            Client: 6vPmIytwOgqjkMY8CIJtJw\n            Uid: byron_effertz@mraz.biz",
+      "request_query_parameters_text": null,
+      "response_headers_text": "access-token:  \n            token-type: Bearer\n            client: 6vPmIytwOgqjkMY8CIJtJw\n            expiry:  \n            uid: byron_effertz@mraz.biz",
+      "has_request?": true,
+      "has_response?": true
+    }
+  ]
+}

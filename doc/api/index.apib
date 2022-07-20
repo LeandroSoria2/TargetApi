@@ -1,0 +1,45 @@
+FORMAT: 1A
+# Target API
+
+# Group Topics
+
+## Index topics [/api/v1/topics]
+
+### Index [GET]
+
++ Request Index - OK - Without params
+
+    + Headers
+
+            Access-Token: H5DVUqDOCXK8eRD652Jgpw
+            Client: 6vPmIytwOgqjkMY8CIJtJw
+            Uid: byron_effertz@mraz.biz
+
++ Response 200 ()
+
+    + Headers
+
+            access-token:  
+            token-type: Bearer
+            client: 6vPmIytwOgqjkMY8CIJtJw
+            expiry:  
+            uid: byron_effertz@mraz.biz
+
+    + Body
+
+            {
+              "topics": [
+                {
+                  "id": 298,
+                  "name": "voluptatum"
+                },
+                {
+                  "id": 299,
+                  "name": "quis"
+                },
+                {
+                  "id": 300,
+                  "name": "voluptatem"
+                }
+              ]
+            }

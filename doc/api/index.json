@@ -1,0 +1,17 @@
+{
+  "resources": [
+    {
+      "name": "Topics",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Index - OK - Without params",
+          "link": "topics/index_-_ok_-_without_params.json",
+          "groups": "all",
+          "route": "/api/v1/topics",
+          "method": "get"
+        }
+      ]
+    }
+  ]
+}
