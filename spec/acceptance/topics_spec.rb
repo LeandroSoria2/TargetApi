@@ -16,7 +16,7 @@ resource 'Topics' do
 
     get 'Index' do
       context 'when response status is 200' do
-        example 'Index - OK - Without params' do
+        example 'Get all topics Success' do
           do_request
 
           expect(status).to eq(200)
