@@ -34,3 +34,6 @@ Rails/LexicallyScopedActionFilter:
 Style/HashSyntax:
   EnforcedShorthandSyntax: never
 
+Lint/UnusedMethodArgument:
+  Exclude:
+    - spec/support/devise_token_auth_overrides.rb  

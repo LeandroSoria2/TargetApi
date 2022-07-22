@@ -1,0 +1,17 @@
+{
+  "resources": [
+    {
+      "name": "Topics",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Get all topics Success",
+          "link": "topics/get_all_topics_success.json",
+          "groups": "all",
+          "route": "/api/v1/topics",
+          "method": "get"
+        }
+      ]
+    }
+  ]
+}

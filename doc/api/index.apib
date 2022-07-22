@@ -1,0 +1,45 @@
+FORMAT: 1A
+# Target API
+
+# Group Topics
+
+## Index topics [/api/v1/topics]
+
+### Index [GET]
+
++ Request Get all topics Success
+
+    + Headers
+
+            Access-Token: 1234567890123456789012
+            Client: abcdefghijklmnopqrstuv
+            Uid: classie.considine@haag.co
+
++ Response 200 ()
+
+    + Headers
+
+            access-token:  
+            token-type: Bearer
+            client: abcdefghijklmnopqrstuv
+            expiry:  
+            uid: classie.considine@haag.co
+
+    + Body
+
+            {
+              "topics": [
+                {
+                  "id": 342,
+                  "name": "officia"
+                },
+                {
+                  "id": 343,
+                  "name": "omnis"
+                },
+                {
+                  "id": 344,
+                  "name": "sint"
+                }
+              ]
+            }
