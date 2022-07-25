@@ -10,6 +10,7 @@ AllCops:
   Exclude:
     - bin/bundle
     - db/schema.rb
+    - db/migrate
 
 Layout/LineLength:
   Exclude:
