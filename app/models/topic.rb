@@ -12,5 +12,6 @@
 #  index_topics_on_name  (name) UNIQUE
 #
 class Topic < ApplicationRecord
+  has_one_attached :image
   validates :name, presence: true, uniqueness: true
 end

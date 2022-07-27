@@ -18,8 +18,11 @@ describe 'GET api/v1/topics', type: :request do
     end
 
     it 'returns all the topics' do
-      subject
       expect(json[:topics].pluck(:id, :name)).to match_array(topics.pluck(:id, :name))
+    end
+
+    it 'returns the image_url in the body response' do
+      json[:topics].each { |topic| expect(topic).to have_key('image_url') }
     end
   end
 
