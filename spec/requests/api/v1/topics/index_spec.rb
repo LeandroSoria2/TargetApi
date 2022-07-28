@@ -5,9 +5,8 @@ describe 'GET api/v1/topics', type: :request do
   let!(:headers) { auth_headers }
 
   subject { get api_v1_topics_path, headers: headers, as: :json }
-
   context 'when there are topics' do
-    let!(:topics) { create_list(:topic, 3) }
+    let!(:topics) { create_list(:topic, 3, :with_image) }
 
     it 'returns a successful response' do
       subject
@@ -27,18 +26,22 @@ describe 'GET api/v1/topics', type: :request do
       expect(json[:topics].pluck(:id, :name)).to match_array(topics.pluck(:id, :name))
     end
 
-    it 'returns the image_url in the body response' do
+    it 'returns the image in the body response' do
       subject
-      json[:topics].each { |topic| expect(topic).to have_key('image_url') }
+      json[:topics].each do |topic|
+        expect(topic[:image_url]).to match(/li_.png/)
+      end
     end
   end
 
   context 'When there are topics without image' do
-    let(:topics_no_image) { create_list(:topic, 3, image: nil) }
+    let!(:topics_no_image) { create_list(:topic, 3) }
 
-    it 'returns no image_url in the body respons' do
+    it 'does not return an image_url in the body response' do
       subject
-      json[:topics].each { |topic| expect(topic).not_to have_key('image_url') }
+      json[:topics].each do |topic|
+        expect(topic[:image_url]).not_to match(/li_.png/)
+      end
     end
   end
 

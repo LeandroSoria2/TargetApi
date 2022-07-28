@@ -9,12 +9,10 @@ inherit_mode:
 AllCops:
   Exclude:
     - bin/bundle
-    - db/schema.rb
     - db/migrate/*
 
 Layout/LineLength:
   Exclude:
-    - db/migrate/*
     - Gemfile
     - config/initializers/devise.rb
 

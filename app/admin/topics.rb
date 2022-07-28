@@ -1,4 +1,5 @@
 ActiveAdmin.register Topic do
+  permit_params :name, :image
   form do |f|
     f.inputs 'Topic' do
       f.input :name
@@ -6,7 +7,6 @@ ActiveAdmin.register Topic do
     end
     f.actions
   end
-  permit_params :name, :image
 
   show do
     attributes_table do

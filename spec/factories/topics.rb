@@ -14,6 +14,9 @@
 FactoryBot.define do
   factory :topic do
     name { Faker::Lorem.unique.word }
-    image { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/li_.png')) }
+
+    trait :with_image do
+      image { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/li_.png')) }
+    end
   end
 end
