@@ -9,12 +9,10 @@ inherit_mode:
 AllCops:
   Exclude:
     - bin/bundle
-    - db/schema.rb
-    - db/migrate
+    - db/migrate/*
 
 Layout/LineLength:
   Exclude:
-    - db/migrate/*
     - Gemfile
     - config/initializers/devise.rb
 
@@ -38,7 +36,3 @@ Style/HashSyntax:
 Lint/UnusedMethodArgument:
   Exclude:
     - spec/support/devise_token_auth_overrides.rb  
-
-Metrics/MethodLength:
-  Exclude:
-    - db/migrate/20220714174633_create_active_storage_tables.active_storage.rb
