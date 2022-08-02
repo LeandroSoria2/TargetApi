@@ -19,6 +19,6 @@
 #
 FactoryBot.define do
   factory :target do
-    
+    name { Faker::Lorem.unique.word }
   end
 end
