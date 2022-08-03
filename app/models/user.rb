@@ -35,5 +35,6 @@ class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::User
 
   enum gender: { female: 0, male: 1, fluid: 2 }
+  has_many :targets, dependent: :destroy
   validates :gender, presence: true
 end
