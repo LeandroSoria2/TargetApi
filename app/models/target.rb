@@ -18,12 +18,11 @@
 #  index_targets_on_user_id   (user_id)
 #
 class Target < ApplicationRecord
-  belongs_to :topic
-  belongs_to :user, counter_cache: true
+  acts_as_mappable lat_column_name: :latitude,
+                   lng_column_name: :longitude
 
-  validates :title, presence: true
-  validates :longitude, :numericality
-  validates :latitude, :numericality
-  validates :radius, :numericality
-  validate :number_of_user_targets
+  belongs_to :topic
+  belongs_to :user
+
+  validates :title, :longitude, :latitude, :radius, presence: true
 end
