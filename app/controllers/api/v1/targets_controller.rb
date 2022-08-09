@@ -3,30 +3,29 @@ module Api
     class TargetsController < Api::V1::ApiController
       def index
         @targets = Target.all
-        render json: @targets
       end
 
       def create
         @target = current_user.targets.create!(target_params)
-        if @target.save
-          render json: { success: true, target: @target }
-        else
-          render json: { success: false }
-        end
+      rescue ActiveRecord::RecordInvalid => e
+        render json: {
+          error: e.to_s
+        }, status: :unprocessable_entity
       end
 
       def destroy
-        if @target.find(params[:id]).destroy!
-          render json: { success: true }
-        else
-          render json: { success: false }
-        end
+        target.destroy!
+        head :no_content
       end
 
       private
 
       def target_params
         params.require(:target).permit(:title, :radius, :longitude, :latitude, :topic_id)
+      end
+
+      def target
+        @target ||= Target.find(params[:id])
       end
     end
   end
