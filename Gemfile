@@ -9,6 +9,7 @@ gem 'bootsnap', require: false
 gem 'byebug', '~> 11.1', '>= 11.1.3'
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'devise_token_auth', '>= 1.2.0', git: 'https://github.com/lynndylanhurley/devise_token_auth'
+gem 'geokit-rails', '~> 2.2'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
