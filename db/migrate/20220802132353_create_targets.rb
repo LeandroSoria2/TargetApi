@@ -10,5 +10,6 @@ class CreateTargets < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+    add_index :targets, :title, unique: true
   end
 end
