@@ -33,7 +33,7 @@ RSpec.describe 'POST api/v1/targets', type: :request do
       it 'returns status code created' do
         subject
 
-        expect(response).to have_http_status (:ok)
+        expect(response).to have_http_status(:ok)
       end
 
       it 'associates the target to current_user' do
