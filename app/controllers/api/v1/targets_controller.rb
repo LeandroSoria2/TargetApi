@@ -3,6 +3,7 @@ module Api
     class TargetsController < Api::V1::ApiController
       def create
         @target = current_user.targets.create!(target_params)
+        render :create
       end
 
       private

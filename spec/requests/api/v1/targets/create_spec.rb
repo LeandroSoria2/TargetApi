@@ -33,7 +33,7 @@ RSpec.describe 'POST api/v1/targets', type: :request do
       it 'returns status code created' do
         subject
 
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status (:ok)
       end
 
       it 'associates the target to current_user' do
@@ -50,7 +50,7 @@ RSpec.describe 'POST api/v1/targets', type: :request do
         let(:topic_id) { nil }
 
         it 'returns unprocessable entity' do
-          expect(response).to have_http_status(:unprocessable_entity)
+          expect(response).to have_http_status(:bad_request)
         end
       end
 
@@ -59,7 +59,7 @@ RSpec.describe 'POST api/v1/targets', type: :request do
 
         it 'returns unprocessable entity' do
           subject
-          expect(response).to have_http_status(:unprocessable_entity)
+          expect(response).to have_http_status(:bad_request)
         end
       end
 
@@ -67,7 +67,7 @@ RSpec.describe 'POST api/v1/targets', type: :request do
         let(:title) { nil }
 
         it 'returns unprocessable entity' do
-          expect(response).to have_http_status(:unprocessable_entity)
+          expect(response).to have_http_status(:bad_request)
         end
       end
 
@@ -75,7 +75,7 @@ RSpec.describe 'POST api/v1/targets', type: :request do
         let(:longitude) { nil }
 
         it 'returns unprocessable entity' do
-          expect(response).to have_http_status(:unprocessable_entity)
+          expect(response).to have_http_status(:bad_request)
         end
       end
 
@@ -83,7 +83,7 @@ RSpec.describe 'POST api/v1/targets', type: :request do
         let(:latitude) { nil }
 
         it 'returns unprocessable entity' do
-          expect(response).to have_http_status(:unprocessable_entity)
+          expect(response).to have_http_status(:bad_request)
         end
       end
     end
