@@ -17,7 +17,7 @@ describe 'GET api/v1/targets', type: :request do
     end
 
     it 'returns all the user targets' do
-      expect(json[:targets].size).to eq(num_of_targets)
+      expect(parsed_response.size).to eq(num_of_targets)
     end
   end
 
@@ -25,7 +25,7 @@ describe 'GET api/v1/targets', type: :request do
     before { subject }
 
     it 'returns an empty array' do
-      expect(json[:targets]).to be_empty
+      expect(parsed_response).to be_empty
     end
   end
 

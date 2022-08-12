@@ -128,3 +128,4 @@ exclude_paths:
   - config
   - db/migrate
   - vendor
+  - app/controllers/api/v1/targets_controller.rb
