@@ -29,5 +29,8 @@ RSpec.describe Target, type: :model do
   describe 'validations' do
     it { is_expected.to validate_numericality_of(:radius).only_integer }
     it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_presence_of(:longitude) }
+    it { is_expected.to validate_presence_of(:latitude) }
+    it { is_expected.to validate_presence_of(:radius) }
   end
 end
