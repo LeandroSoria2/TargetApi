@@ -26,7 +26,7 @@ RSpec.describe 'POST api/v1/targets', type: :request do
     end
 
     context 'when passed correct params' do
-      it 'persist a target record' do
+      it 'persists a target record' do
         expect { subject }.to change { Target.count }.by(1)
       end
 
