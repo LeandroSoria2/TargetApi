@@ -6,23 +6,11 @@ RSpec.describe 'POST api/v1/targets', type: :request do
 
     let(:headers) { auth_headers }
     let(:user) { create(:user) }
-    let(:topic) { create(:topic) }
-    let(:title) { Faker::Science.science }
-    let(:radius) { Faker::Number.between(from: 1, to: 1000) }
-    let(:longitude) { Faker::Address.longitude.round(14).to_s }
-    let(:latitude) { Faker::Address.latitude.round(14).to_s }
+    let!(:topic) { create(:topic) }
     let(:topic_id) { topic.id }
+
     let(:params) do
-      {
-        target:
-        {
-          topic_id: topic_id,
-          title: title,
-          radius: radius,
-          longitude: longitude,
-          latitude: latitude
-        }
-      }
+      { target: attributes_for(:target).merge(topic_id: topic_id) }
     end
 
     context 'when passed correct params' do
@@ -55,7 +43,9 @@ RSpec.describe 'POST api/v1/targets', type: :request do
       end
 
       context 'when radius is incorrect' do
-        let(:radius) { nil }
+        let(:params) do
+          { target: attributes_for(:target).merge(topic_id: topic_id, radius: nil) }
+        end
 
         it 'returns unprocessable entity' do
           subject
@@ -64,7 +54,9 @@ RSpec.describe 'POST api/v1/targets', type: :request do
       end
 
       context 'when title is incorrect' do
-        let(:title) { nil }
+        let(:params) do
+          { target: attributes_for(:target).merge(topic_id: topic_id, title: nil) }
+        end
 
         it 'returns unprocessable entity' do
           expect(response).to have_http_status(:bad_request)
@@ -72,7 +64,9 @@ RSpec.describe 'POST api/v1/targets', type: :request do
       end
 
       context 'when longitude is incorrect' do
-        let(:longitude) { nil }
+        let(:params) do
+          { target: attributes_for(:target).merge(topic_id: topic_id, longitude: nil) }
+        end
 
         it 'returns unprocessable entity' do
           expect(response).to have_http_status(:bad_request)
@@ -80,7 +74,9 @@ RSpec.describe 'POST api/v1/targets', type: :request do
       end
 
       context 'when latitude is incorrect' do
-        let(:latitude) { nil }
+        let(:params) do
+          { target: attributes_for(:target).merge(topic_id: topic_id, latitude: nil) }
+        end
 
         it 'returns unprocessable entity' do
           expect(response).to have_http_status(:bad_request)
@@ -90,6 +86,7 @@ RSpec.describe 'POST api/v1/targets', type: :request do
 
     context 'when user is not logged in' do
       let(:headers) { {} }
+
       it 'returns unauthorized' do
         subject
         expect(response).to have_http_status(:unauthorized)
