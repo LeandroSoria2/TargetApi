@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     namespace :v1, defaults: { format: :json } do
       devise_scope :user do
         resources :topics, only: :index
+        resources :targets, only: :create
       end
     end
   end

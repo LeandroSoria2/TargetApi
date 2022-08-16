@@ -8,7 +8,7 @@ require 'active_storage/engine'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Target
+module TargetApi
   class Application < Rails::Application
     config.load_defaults 7.0
     config.add_autoload_paths_to_load_path = false
