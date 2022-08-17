@@ -30,4 +30,14 @@ describe 'DELETE api/v1/targets/:id' do
       expect(response).to have_http_status(:not_found)
     end
   end
+
+  context 'when user is not signed in' do
+    let(:headers) { {} }
+
+    it 'returns unauthorized' do
+      subject
+
+      expect(response).to have_http_status(:unauthorized)
+    end
+  end
 end
