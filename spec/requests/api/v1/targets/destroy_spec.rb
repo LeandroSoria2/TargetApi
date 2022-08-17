@@ -18,7 +18,7 @@ describe 'DELETE api/v1/targets/:id' do
     it 'deletes the target' do
       expect {
         subject
-      }.to change { Target.count }.by(-1)
+      }.to change { Target.count }.from(1).to(0)
     end
   end
 
