@@ -20,7 +20,7 @@
 #
 FactoryBot.define do
   factory :target do
-    title { Faker::Name.UNIQUE.title }
+    sequence(:title) { |n| "Title Nro #{n}" }
     radius { Faker::Number.between(from: 1, to: 1000) }
     longitude { Faker::Address.longitude }
     latitude { Faker::Address.latitude }
