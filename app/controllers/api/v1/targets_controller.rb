@@ -12,10 +12,6 @@ module Api
       def destroy
         target.destroy!
         head :no_content
-      rescue ActiveRecord::RecordNotFound => e
-        render json: {
-          error: e.to_s
-        }, status: :not_found
       end
 
       private

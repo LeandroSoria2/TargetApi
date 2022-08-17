@@ -23,7 +23,7 @@ describe 'DELETE api/v1/targets/:id' do
   end
 
   context 'when user sends someone elses target id' do
-    let(:target_id) { 1237 }
+    let(:target_id) { -1 }
 
     it 'returns not_found' do
       subject
