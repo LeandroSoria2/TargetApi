@@ -92,5 +92,21 @@ RSpec.describe 'POST api/v1/targets', type: :request do
         expect(response).to have_http_status(:unauthorized)
       end
     end
+
+    context 'when the user has 9 targets' do
+      let(:targets) { create_list(:target, 9, user: user) }
+      it 'the target create correct' do
+        subject
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context 'when the user has 10 or more targets' do
+      let!(:targets) { create_list(:target, 10, user: user) }
+      it 'the target does not create' do
+        subject
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
   end
 end

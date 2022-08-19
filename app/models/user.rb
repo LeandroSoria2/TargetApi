@@ -20,6 +20,7 @@
 #  tokens                 :json
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  targets_count          :integer
 #
 # Indexes
 #
@@ -34,7 +35,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
 
+  MAX_ALLOWED_TARGETS = 10
+
   enum gender: { female: 0, male: 1, fluid: 2 }
   has_many :targets, dependent: :destroy
   validates :gender, presence: true
+
+  def can_add_more_targets?
+    targets.count >= MAX_ALLOWED_TARGETS
+  end
 end
