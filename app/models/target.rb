@@ -32,6 +32,6 @@ class Target < ApplicationRecord
   private
 
   def number_of_user_targets
-    errors.add(:user, 'exceeded number of targets limit') if user&.can_add_more_targets?
+    errors.add(:user, 'exceeded number of targets limit') if user&.targets_limit_exceeded?
   end
 end

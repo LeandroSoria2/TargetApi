@@ -41,7 +41,7 @@ class User < ApplicationRecord
   has_many :targets, dependent: :destroy
   validates :gender, presence: true
 
-  def can_add_more_targets?
+  def targets_limit_exceeded?
     targets.count >= MAX_ALLOWED_TARGETS
   end
 end
