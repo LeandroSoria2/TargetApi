@@ -1,6 +1,7 @@
-module Target
+module Targets
   class CreateService
     MAX_ALLOWED_TARGETS = 10
+    attr_reader :current_user, :params
 
     def initialize(current_user, params)
       @params = params
@@ -8,9 +9,9 @@ module Target
     end
 
     def call
-      raise StandardError unless user_targets_count < MAX_ALLOWED_TARGETS
+      raise MaxAllowTargetsError unless current_user.targets.count < MAX_ALLOWED_TARGETS
 
-      Target.create!(params)
+      current_user.targets.create!(params)
     end
   end
 end

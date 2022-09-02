@@ -6,7 +6,9 @@ module Api
       end
 
       def create
-        @target = CreateService.new(current_user, target_params).call
+        @target = Targets::CreateService.new(current_user, target_params).call
+      rescue MaxAllowTargetsError
+        head :bad_request
       end
 
       def destroy

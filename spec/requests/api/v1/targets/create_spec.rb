@@ -105,7 +105,7 @@ RSpec.describe 'POST api/v1/targets', type: :request do
       let!(:targets) { create_list(:target, 10, user: user) }
       it 'the target does not create' do
         subject
-        expect(response.body).to include('exceeded number of targets limit')
+        expect(response).to have_http_status(:bad_request)
       end
     end
   end
