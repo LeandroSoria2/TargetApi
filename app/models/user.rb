@@ -40,8 +40,4 @@ class User < ApplicationRecord
   enum gender: { female: 0, male: 1, fluid: 2 }
   has_many :targets, dependent: :destroy
   validates :gender, presence: true
-
-  def targets_limit_exceeded?
-    targets.count >= MAX_ALLOWED_TARGETS
-  end
 end

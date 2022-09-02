@@ -27,11 +27,4 @@ class Target < ApplicationRecord
 
   validates :title, :longitude, :latitude, :radius, presence: true
   validates :radius, numericality: { only_integer: true }
-  validate :number_of_user_targets
-
-  private
-
-  def number_of_user_targets
-    errors.add(:user, 'exceeded number of targets limit') if user&.targets_limit_exceeded?
-  end
 end

@@ -6,7 +6,7 @@ module Api
       end
 
       def create
-        @target = current_user.targets.create!(target_params)
+        @target = CreateService.new(current_user, target_params).call
       end
 
       def destroy
