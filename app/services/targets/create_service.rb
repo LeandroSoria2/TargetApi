@@ -4,18 +4,20 @@ module Targets
     attr_reader :current_user, :params
 
     def initialize(current_user, params)
-      @params = params
       @current_user = current_user
-    end
-
-    def targets
-      @targets ||= current_user.targets
+      @params = params
     end
 
     def call
-      raise MaxAllowTargetsError unless current_user.targets.count < MAX_ALLOWED_TARGETS
+      raise MaxAllowTargetsError unless targets.count < MAX_ALLOWED_TARGETS
 
       targets.create!(params)
+    end
+
+    private
+
+    def targets
+      @targets ||= current_user.targets
     end
   end
 end

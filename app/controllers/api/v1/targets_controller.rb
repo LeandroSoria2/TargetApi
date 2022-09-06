@@ -8,7 +8,7 @@ module Api
       def create
         @target = Targets::CreateService.new(current_user, target_params).call
       rescue MaxAllowTargetsError
-        head :bad_request
+        head :unprocessable_entity
       end
 
       def destroy
