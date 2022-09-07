@@ -36,7 +36,7 @@ describe Targets::CreateService do
     context 'when the user has 10 or more targets' do
       let!(:targets) { create_list(:target, 10, user: user) }
 
-      it 'the target does not create' do
+      it 'does not create a new target' do
         expect { subject }.to raise_error(MaxAllowTargetsError)
       end
     end
