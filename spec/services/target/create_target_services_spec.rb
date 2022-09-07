@@ -17,7 +17,7 @@ describe Targets::CreateService do
     context 'when the user has 9 targets' do
       let!(:targets) { create_list(:target, 9, user: user) }
 
-      it 'increment the Targets count' do
+      it 'increments the Targets count' do
         expect { subject }.to change { Target.count }.from(9).to(10)
       end
 
