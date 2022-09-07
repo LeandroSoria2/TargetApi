@@ -21,7 +21,7 @@ describe Targets::CreateService do
         expect { subject }.to change { Target.count }.from(9).to(10)
       end
 
-      it 'create the Target with tie right values' do
+      it 'creates the Target with the right values' do
         subject
         last_target = Target.last
 
