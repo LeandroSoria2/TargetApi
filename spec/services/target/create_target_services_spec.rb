@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Targets::CreateService do
-  describe '' do
+  describe '#call' do
     let(:user) { create(:user) }
     let!(:topic) { create(:topic) }
     let(:topic_id) { topic.id }
