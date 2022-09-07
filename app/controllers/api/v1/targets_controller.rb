@@ -6,7 +6,9 @@ module Api
       end
 
       def create
-        @target = current_user.targets.create!(target_params)
+        @target = Targets::CreateService.new(current_user, target_params).call
+      rescue MaxAllowTargetsError
+        head :unprocessable_entity
       end
 
       def destroy
