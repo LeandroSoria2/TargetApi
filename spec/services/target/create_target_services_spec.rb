@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Targets::CreateService do
-  describe '' do
+  describe '#call' do
     let(:user) { create(:user) }
     let!(:topic) { create(:topic) }
     let(:topic_id) { topic.id }
@@ -21,7 +21,7 @@ describe Targets::CreateService do
         expect { subject }.to change { Target.count }.from(9).to(10)
       end
 
-      it 'create the Target with tie right values' do
+      it 'create the Target with the right values' do
         subject
         last_target = Target.last
 
