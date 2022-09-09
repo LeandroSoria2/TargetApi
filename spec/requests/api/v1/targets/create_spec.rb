@@ -13,9 +13,9 @@ RSpec.describe 'POST api/v1/targets', type: :request do
       { target: attributes_for(:target).merge(topic_id: topic_id) }
     end
 
-    context 'when have less than 10 targets' do
+    context 'when user has less than 10 targets' do
       context 'when passed correct params' do
-        it 'persists a target record' do
+        it 'creates a target record' do
           expect { subject }.to change { Target.count }.by(1)
         end
 
