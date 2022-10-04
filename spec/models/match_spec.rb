@@ -18,6 +18,6 @@ require 'rails_helper'
 describe Match, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:target) }
-    it { is_expected.to belong_to(:compatible_target).class_name('Target') }
+    it { is_expected.to belong_to(:compatible_target) }
   end
 end
