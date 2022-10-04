@@ -40,5 +40,61 @@ describe Targets::CreateService do
         expect { subject }.to raise_error(MaxAllowTargetsError)
       end
     end
+
+    context 'when two targets match' do
+      let!(:target) do
+        create(:target,
+               latitude: target_params[:latitude],
+               longitude: target_params[:longitude],
+               topic_id: topic_id)
+      end
+
+      it 'Target connect with other target' do
+        expect { subject }.to change { Match.count }.from(0).to(1)
+      end
+    end
+
+    context 'when two targets does not match' do
+      context 'when has different topic' do
+        let!(:target) do
+          create(:target,
+                 latitude: target_params[:latitude],
+                 longitude: target_params[:longitude])
+        end
+
+        it 'does not create a connection' do
+          expect { subject }.not_to change { Match.count }
+        end
+      end
+    end
+
+    context 'When is out of range' do
+      let!(:target) do
+        create(:target,
+               topic_id: topic_id)
+      end
+      it 'the number of macthers does not change' do
+        expect { subject }.not_to change { Match.count }
+      end
+    end
+
+    context 'When has the same user' do
+      let!(:target) do
+        create(:target,
+               latitude: target_params[:latitude],
+               longitude: target_params[:longitude],
+               topic_id: topic_id,
+               user: user)
+      end
+      it 'the number of macthers does not change' do
+        expect { subject }.not_to change { Match.count }
+      end
+    end
+
+    context 'when there is no other target' do
+      it 'he number of macthers does not change' do
+        expect { subject }.not_to change { Match.count }
+      end
+    end
   end
 end
