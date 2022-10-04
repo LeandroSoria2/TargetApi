@@ -22,8 +22,10 @@ class Target < ApplicationRecord
   acts_as_mappable lat_column_name: :latitude,
                    lng_column_name: :longitude
 
-  belongs_to :topic
   belongs_to :user
+  belongs_to :topic
+  has_many :matches, dependent: :destroy
+  has_many :compatible_targets, through: :match
 
   validates :title, :longitude, :latitude, :radius, presence: true
   validates :radius, numericality: { only_integer: true }
