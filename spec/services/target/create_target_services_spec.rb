@@ -66,34 +66,34 @@ describe Targets::CreateService do
           expect { subject }.not_to change { Match.count }
         end
       end
-    end
 
-    context 'When is out of range' do
-      let!(:target) do
-        create(:target,
-               topic_id: topic_id)
+      context 'When is out of range' do
+        let!(:target) do
+          create(:target,
+                 topic_id: topic_id)
+        end
+        it 'does not create a match' do
+          expect { subject }.not_to change { Match.count }
+        end
       end
-      it 'does not create a match' do
-        expect { subject }.not_to change { Match.count }
-      end
-    end
 
-    context 'When they have the same user' do
-      let!(:target) do
-        create(:target,
-               latitude: target_params[:latitude],
-               longitude: target_params[:longitude],
-               topic_id: topic_id,
-               user: user)
+      context 'When they have the same user' do
+        let!(:target) do
+          create(:target,
+                 latitude: target_params[:latitude],
+                 longitude: target_params[:longitude],
+                 topic_id: topic_id,
+                 user: user)
+        end
+        it 'does not create a match' do
+          expect { subject }.not_to change { Match.count }
+        end
       end
-      it 'does not create a match' do
-        expect { subject }.not_to change { Match.count }
-      end
-    end
 
-    context 'when there is no other target' do
-      it 'does not create a match' do
-        expect { subject }.not_to change { Match.count }
+      context 'when there is no other target' do
+        it 'does not create a match' do
+          expect { subject }.not_to change { Match.count }
+        end
       end
     end
   end
