@@ -49,7 +49,7 @@ describe Targets::CreateService do
                topic_id: topic_id)
       end
 
-      it 'Target connect with other target' do
+      it 'creates a match' do
         expect { subject }.to change { Match.count }.from(0).to(1)
       end
     end
