@@ -54,7 +54,7 @@ describe Targets::CreateService do
       end
     end
 
-    context 'when two targets does not match' do
+    context 'when two targets do not match' do
       context 'when has different topic' do
         let!(:target) do
           create(:target,
