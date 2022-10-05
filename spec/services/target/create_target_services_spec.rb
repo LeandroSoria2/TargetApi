@@ -92,7 +92,7 @@ describe Targets::CreateService do
     end
 
     context 'when there is no other target' do
-      it 'he number of macthers does not change' do
+      it 'does not create a match' do
         expect { subject }.not_to change { Match.count }
       end
     end
