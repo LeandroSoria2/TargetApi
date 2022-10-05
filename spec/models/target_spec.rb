@@ -25,6 +25,7 @@ RSpec.describe Target, type: :model do
     it { is_expected.to belong_to(:topic) }
     it { is_expected.to belong_to(:user) }
     it { is_expected.to have_many(:matches) }
+    it { is_expected.to have_many(:compatible_targets).through(:matches) }
   end
 
   describe 'validations' do
