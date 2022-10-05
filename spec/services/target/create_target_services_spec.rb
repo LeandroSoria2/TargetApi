@@ -62,7 +62,7 @@ describe Targets::CreateService do
                  longitude: target_params[:longitude])
         end
 
-        it 'does not create a connection' do
+        it 'does not create a match' do
           expect { subject }.not_to change { Match.count }
         end
       end
