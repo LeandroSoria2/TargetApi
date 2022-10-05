@@ -73,7 +73,7 @@ describe Targets::CreateService do
         create(:target,
                topic_id: topic_id)
       end
-      it 'the number of macthers does not change' do
+      it 'does not create a match' do
         expect { subject }.not_to change { Match.count }
       end
     end
