@@ -55,7 +55,7 @@ describe Targets::CreateService do
     end
 
     context 'when two targets do not match' do
-      context 'when has different topic' do
+      context 'when they have a different topic' do
         let!(:target) do
           create(:target,
                  latitude: target_params[:latitude],
