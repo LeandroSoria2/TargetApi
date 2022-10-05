@@ -78,7 +78,7 @@ describe Targets::CreateService do
       end
     end
 
-    context 'When has the same user' do
+    context 'When they have the same user' do
       let!(:target) do
         create(:target,
                latitude: target_params[:latitude],
