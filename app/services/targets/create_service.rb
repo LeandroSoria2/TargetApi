@@ -25,16 +25,18 @@ module Targets
     end
 
     def find_match(target)
-      compatible_target = Target.within(target.radius, origin: [target.latitude, target.longitude])
-                                .where(topic_id: target.topic_id)
-                                .where.not(user_id: target.user_id)
-                                &.first
-
+      compatible_target = compatible_target(target)
       create_match(target, compatible_target) if compatible_target.present?
     end
 
     def create_match(target, compatible_target)
       Match.create!(target: target, compatible_target: compatible_target)
+    end
+
+    def compatible_target(target)
+      TargetQuery.new.compatible_target(
+        target.radius, target.latitude, target.longitude, target.topic_id, target.user_id
+      )
     end
   end
 end
