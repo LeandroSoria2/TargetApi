@@ -38,6 +38,9 @@ RSpec.describe User, type: :model do
                      fluid: 2)
         .backed_by_column_of_type(:integer)
     end
+  end
+
+  describe 'associations' do
     it { is_expected.to have_many(:targets).dependent(:destroy) }
   end
 end
