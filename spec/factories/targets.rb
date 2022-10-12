@@ -27,5 +27,6 @@ FactoryBot.define do
     latitude { Faker::Address.latitude }
     topic
     user
+    matched { false }
   end
 end
