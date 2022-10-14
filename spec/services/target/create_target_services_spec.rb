@@ -40,5 +40,68 @@ describe Targets::CreateService do
         expect { subject }.to raise_error(MaxAllowTargetsError)
       end
     end
+    context 'when there are targets in range' do
+      context 'when there are targets with the same topic' do
+        context 'when there are targets without a match' do
+          context 'when there are targets with different users' do
+            let!(:target) do
+              create(:target,
+                     latitude: target_params[:latitude],
+                     longitude: target_params[:longitude],
+                     topic_id: topic_id)
+            end
+
+            it 'creates a match' do
+              expect { subject }.to change { Match.count }.from(0).to(1)
+            end
+          end
+        end
+      end
+    end
+
+    context 'when two targets do not match' do
+      context 'when they have a different topic' do
+        let!(:target) do
+          create(:target,
+                 latitude: target_params[:latitude],
+                 longitude: target_params[:longitude])
+        end
+
+        it 'does not create a match' do
+          expect { subject }.not_to change { Match.count }
+        end
+      end
+
+      context 'when is out of range' do
+        let!(:target) do
+          create(:target,
+                 topic_id: topic_id)
+        end
+
+        it 'does not create a match' do
+          expect { subject }.not_to change { Match.count }
+        end
+      end
+
+      context 'when they have the same user' do
+        let!(:target) do
+          create(:target,
+                 latitude: target_params[:latitude],
+                 longitude: target_params[:longitude],
+                 topic_id: topic_id,
+                 user: user)
+        end
+
+        it 'does not create a match' do
+          expect { subject }.not_to change { Match.count }
+        end
+      end
+
+      context 'when there is no other target' do
+        it 'does not create a match' do
+          expect { subject }.not_to change { Match.count }
+        end
+      end
+    end
   end
 end

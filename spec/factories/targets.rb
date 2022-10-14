@@ -11,6 +11,7 @@
 #  latitude   :decimal(, )      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  matched    :boolean          default(FALSE), not null
 #
 # Indexes
 #
@@ -26,5 +27,6 @@ FactoryBot.define do
     latitude { Faker::Address.latitude }
     topic
     user
+    matched { false }
   end
 end

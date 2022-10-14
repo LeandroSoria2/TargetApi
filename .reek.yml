@@ -23,7 +23,8 @@ detectors:
     allow_calls: []
   FeatureEnvy:
     enabled: true
-    exclude: []
+    exclude:
+      - TargetQuery#compatible_target
   InstanceVariableAssumption:
     enabled: false
   IrresponsibleModule:

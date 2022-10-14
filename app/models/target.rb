@@ -11,6 +11,7 @@
 #  latitude   :decimal(, )      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  matched    :boolean          default(FALSE), not null
 #
 # Indexes
 #
@@ -29,4 +30,5 @@ class Target < ApplicationRecord
 
   validates :title, :longitude, :latitude, :radius, presence: true
   validates :radius, numericality: { only_integer: true }
+  validates :matched, inclusion: { in: [true, false] }
 end
