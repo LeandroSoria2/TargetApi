@@ -77,6 +77,7 @@ describe Targets::CreateService do
           create(:target,
                  topic_id: topic_id)
         end
+
         it 'does not create a match' do
           expect { subject }.not_to change { Match.count }
         end
@@ -90,6 +91,7 @@ describe Targets::CreateService do
                  topic_id: topic_id,
                  user: user)
         end
+
         it 'does not create a match' do
           expect { subject }.not_to change { Match.count }
         end

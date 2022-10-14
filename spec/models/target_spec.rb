@@ -34,5 +34,6 @@ RSpec.describe Target, type: :model do
     it { is_expected.to validate_presence_of(:longitude) }
     it { is_expected.to validate_presence_of(:latitude) }
     it { is_expected.to validate_presence_of(:radius) }
+    it { is_expected.not_to allow_value(nil).for(:matched) }
   end
 end
