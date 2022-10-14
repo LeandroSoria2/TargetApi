@@ -30,5 +30,5 @@ class Target < ApplicationRecord
 
   validates :title, :longitude, :latitude, :radius, presence: true
   validates :radius, numericality: { only_integer: true }
-  validates :matched, inclusion: { in: [ true, false ] }
+  validates :matched, inclusion: { in: [true, false] }
 end
