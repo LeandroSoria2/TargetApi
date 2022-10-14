@@ -40,17 +40,22 @@ describe Targets::CreateService do
         expect { subject }.to raise_error(MaxAllowTargetsError)
       end
     end
+    context 'when there are targets in range' do
+      context 'when there are targets with the same topic' do
+        context 'when there are targets without a match' do
+          context 'when there are targets with different users' do
+            let!(:target) do
+              create(:target,
+                     latitude: target_params[:latitude],
+                     longitude: target_params[:longitude],
+                     topic_id: topic_id)
+            end
 
-    context 'when two targets match' do
-      let!(:target) do
-        create(:target,
-               latitude: target_params[:latitude],
-               longitude: target_params[:longitude],
-               topic_id: topic_id)
-      end
-
-      it 'creates a match' do
-        expect { subject }.to change { Match.count }.from(0).to(1)
+            it 'creates a match' do
+              expect { subject }.to change { Match.count }.from(0).to(1)
+            end
+          end
+        end
       end
     end
 
