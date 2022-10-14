@@ -11,7 +11,7 @@
 #  latitude   :decimal(, )      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  matched    :boolean
+#  matched    :boolean          default(FALSE), not null
 #
 # Indexes
 #

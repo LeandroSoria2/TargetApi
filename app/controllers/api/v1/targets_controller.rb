@@ -6,7 +6,7 @@ module Api
       end
 
       def create
-        @target = Targets::CreateService.new(current_user, target_params).call
+        @target = Targets::CreateService.new(current_user, target_attributes).call
       rescue MaxAllowTargetsError
         head :unprocessable_entity
       end
@@ -22,7 +22,7 @@ module Api
         params.require(:target).permit(:title, :radius, :longitude, :latitude, :topic_id)
       end
 
-      def target_attibutes
+      def target_attributes
         {
           title: target_params[:title],
           radius: target_params[:radius],

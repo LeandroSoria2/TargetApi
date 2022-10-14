@@ -67,7 +67,7 @@ describe Targets::CreateService do
         end
       end
 
-      context 'When is out of range' do
+      context 'when is out of range' do
         let!(:target) do
           create(:target,
                  topic_id: topic_id)
@@ -77,7 +77,7 @@ describe Targets::CreateService do
         end
       end
 
-      context 'When they have the same user' do
+      context 'when they have the same user' do
         let!(:target) do
           create(:target,
                  latitude: target_params[:latitude],

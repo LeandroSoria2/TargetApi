@@ -72,7 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_10_155749) do
     t.decimal "latitude", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "matched"
+    t.boolean "matched", default: false, null: false
     t.index ["title"], name: "index_targets_on_title", unique: true
     t.index ["topic_id"], name: "index_targets_on_topic_id"
     t.index ["user_id"], name: "index_targets_on_user_id"

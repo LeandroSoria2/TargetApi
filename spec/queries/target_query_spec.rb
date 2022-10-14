@@ -14,23 +14,41 @@ describe TargetQuery do
             radius: 25,
             latitude: 60,
             longitude: -60,
-            topic_id: topic_id)
+            topic_id: topic_id,
+            user: user)
     end
 
     context 'when there are targets in range' do
       context 'when there are targets with the same topic' do
         context 'when there are targets without a match' do
-          let!(:target) do
-            create(:target,
-                   radius: 20,
-                   latitude: 60,
-                   longitude: -60,
-                   topic_id: topic_id,
-                   matched: false)
-          end
+          context 'when there are targets with different users' do
+            let!(:target) do
+              create(:target,
+                     radius: 20,
+                     latitude: 60,
+                     longitude: -60,
+                     topic_id: topic_id,
+                     matched: false)
+            end
 
-          it 'returns a complatible target' do
-            expect(subject).to eq(target)
+            it 'returns a complatible target' do
+              expect(subject).to eq(target)
+            end
+          end
+          context 'when there are targers with same user' do
+            let!(:target) do
+              create(:target,
+                     radius: 20,
+                     latitude: 60,
+                     longitude: -60,
+                     topic_id: topic_id,
+                     matched: false,
+                     user: user)
+            end
+
+            it 'does not return a compatible target' do
+              expect(subject).to be nil
+            end
           end
         end
 
