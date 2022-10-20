@@ -34,10 +34,15 @@ module Targets
       [target, compatible_target].each do |target_to_update|
         target_to_update.update!(matched: true)
       end
+      notification(target.user)
     end
 
     def compatible_target(target)
       TargetQuery.new.compatible_target(target)
+    end
+
+    def notification(user)
+      MatchNotificationMailer.send_match_email(user).deliver_later
     end
   end
 end
