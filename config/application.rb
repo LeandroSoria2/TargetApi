@@ -16,5 +16,14 @@ module TargetApi
       g.test_framework :rspec
       g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end
+    ActionMailer::Base.smtp_settings = {
+      user_name: 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
+      password: '<SENDGRID_API_KEY>', # This is the secret sendgrid API key which was issued during
+      domain: 'yourdomain.com',
+      address: 'smtp.sendgrid.net',
+      port: 587,
+      authentication: :plain,
+      enable_starttls_auto: true
+    }
   end
 end
