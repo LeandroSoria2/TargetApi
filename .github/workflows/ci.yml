@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  build: 
+  build:
     runs-on: ubuntu-latest
     services:
       db:
@@ -11,6 +11,9 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_HOST_AUTH_METHOD: trust
+          SENGRID_API_KEY: ${{secrets.SENGRID_API_KEY}}
+          SENGRID_EMAIL: ${{secrets.SENGRID_EMAIL}}
+          SERVER_URL: ${{secrets.SERVER_URL}}
         ports:
           - 5432:5432
         options: >-
@@ -35,7 +38,7 @@ jobs:
           path: "./db/schema.rb"
       - name: Run Tests
         run: |
-          bundle exec rspec       
+          bundle exec rspec
       - name: Check for missing annotations
         run: bundle exec annotate
       - name: Run Code Analysis
