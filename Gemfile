@@ -30,7 +30,6 @@ group :development, :test do
   gem 'faker', '~> 2.21'
   gem 'rspec_api_documentation'
   gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
-  gem 'sendgrid-ruby'
 end
 
 group :development do

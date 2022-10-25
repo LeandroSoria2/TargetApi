@@ -348,7 +348,6 @@ GEM
       rubocop (>= 0.72, < 2)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
-    ruby_http_client (3.5.5)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -364,8 +363,6 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
-    sendgrid-ruby (6.6.2)
-      ruby_http_client (~> 3.4)
     sexp_processor (4.16.1)
     shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
@@ -440,7 +437,6 @@ DEPENDENCIES
   rubocop-rootstrap (~> 1.2)
   sass-rails (~> 6.0)
   selenium-webdriver
-  sendgrid-ruby
   shoulda-matchers (~> 5.1)
   sprockets-rails
   stimulus-rails

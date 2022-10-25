@@ -16,14 +16,19 @@ module TargetApi
       g.test_framework :rspec
       g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end
-    ActionMailer::Base.smtp_settings = {
-      user_name: 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
-      password: '<SENDGRID_API_KEY>', # This is the secret sendgrid API key which was issued during
-      domain: 'yourdomain.com',
+    config.action_mailer.smtp_settings = {
       address: 'smtp.sendgrid.net',
       port: 587,
+      domain: ENV.fetch('SERVER_URL', nil),
       authentication: :plain,
-      enable_starttls_auto: true
+      user_name: 'apikey',
+      password: ENV.fetch('SENDGRID_API_KEY', nil)
+    }
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = { host: ENV.fetch('SERVER_URL', nil) }
+    config.action_mailer.default_options = {
+      from: ENV.fetch('SENDGRID_SENDER_EMAIL')
     }
   end
 end
