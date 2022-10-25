@@ -12,7 +12,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_HOST_AUTH_METHOD: trust
           SENGRID_API_KEY: ${{secrets.SENGRID_API_KEY}}
-          SENGRID_EMAIL: ${{secrets.SENGRID_EMAIL}}
+          SENGRID_SENDER_EMAIL: ${{secrets.SENGRID_EMAIL}}
           SERVER_URL: ${{secrets.SERVER_URL}}
         ports:
           - 5432:5432
