@@ -11,9 +11,9 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_HOST_AUTH_METHOD: trust
-          SENDGRID_API_KEY: ${{secrets.SENDGRID_API_KEY}}
-          SENDGRID_SENDER_EMAIL: ${{secrets.SENDGRID_SENDER_EMAIL}}
-          SERVER_URL: ${{secrets.SERVER_URL}}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          SENDGRID_SENDER_EMAIL: ${{ secrets.SENDGRID_SENDER_EMAIL }}
+          SERVER_URL: ${{ secrets.SERVER_URL }}
         ports:
           - 5432:5432
         options: >-
