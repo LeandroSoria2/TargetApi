@@ -38,4 +38,5 @@ class User < ApplicationRecord
   validates :gender, presence: true
 
   has_many :targets, dependent: :destroy
+  has_many :conversation
 end

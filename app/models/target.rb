@@ -27,6 +27,7 @@ class Target < ApplicationRecord
   belongs_to :topic
   has_many :matches, dependent: :destroy
   has_many :compatible_targets, through: :matches
+  delegate :topic, to: :target
 
   validates :title, :longitude, :latitude, :radius, presence: true
   validates :radius, numericality: { only_integer: true }

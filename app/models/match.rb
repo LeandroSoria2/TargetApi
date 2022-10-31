@@ -16,6 +16,7 @@
 class Match < ApplicationRecord
   belongs_to :target
   belongs_to :compatible_target, class_name: 'Target', dependent: :destroy
+  has_many :conversation, dependent: :destroy
 
   delegate :topic, to: :target
 end
