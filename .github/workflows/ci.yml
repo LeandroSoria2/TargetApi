@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  build: 
+  build:
     runs-on: ubuntu-latest
     services:
       db:
@@ -18,6 +18,10 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+    env:
+      SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+      SENDGRID_SENDER_EMAIL: ${{ secrets.SENDGRID_SENDER_EMAIL }}
+      SERVER_URL: ${{ secrets.SERVER_URL }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -35,7 +39,7 @@ jobs:
           path: "./db/schema.rb"
       - name: Run Tests
         run: |
-          bundle exec rspec       
+          bundle exec rspec
       - name: Check for missing annotations
         run: bundle exec annotate
       - name: Run Code Analysis

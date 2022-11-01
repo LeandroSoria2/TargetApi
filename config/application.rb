@@ -16,5 +16,19 @@ module TargetApi
       g.test_framework :rspec
       g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end
+    config.action_mailer.smtp_settings = {
+      address: 'smtp.sendgrid.net',
+      port: 587,
+      domain: ENV.fetch('SERVER_URL', nil),
+      authentication: :plain,
+      user_name: 'apikey',
+      password: ENV.fetch('SENDGRID_API_KEY', nil)
+    }
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = { host: ENV.fetch('SERVER_URL', nil) }
+    config.action_mailer.default_options = {
+      from: ENV.fetch('SENDGRID_SENDER_EMAIL')
+    }
   end
 end
