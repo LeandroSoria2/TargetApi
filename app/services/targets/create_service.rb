@@ -42,7 +42,7 @@ module Targets
     end
 
     def notification(user)
-      MatchNotificationMailer.send_match_email(user).deliver
+      NotificationService.send_match_email(user).deliver
     end
   end
 end

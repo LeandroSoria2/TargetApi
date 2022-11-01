@@ -1,4 +1,4 @@
-class MatchNotificationMailer
+class NotificationService
   attr_reader :user, :message, :conversation
 
   def initialize(user, message)
